@@ -1,0 +1,63 @@
+<div *ngIf="movie">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">{{movie.v_title}}</h3>    
+        </div> 
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-7">
+                    <div class='embed-container'><iframe [src]='safeURL' frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></div>
+                </div>  
+                <ul class="list-group" class="col-md-5">
+                    
+                    
+                    <li class="list-group-item col-md-12" *ngFor="let episode of movie.episode; let i=index" >
+                        <div class="col-md-4">
+                            <a routerLink="/movie/{{episode.v_id}}"><img *ngIf = "episode.v_url_poster_landscape" class="thumbnail" src="{{episode.v_url_poster_landscape}}" alt="{{episode.v_title}}"></a>   
+                        </div>
+                        <div class="col-md-8">
+                            <h4>{{episode.v_title}}</h4>
+                        </div> 
+                    </li>
+                    
+                </ul>
+            </div>
+            <div class="row">  
+                <div class="col-md-12">
+                    <ul class="list-group">
+                        <li class="list-group-item">Category: {{movie.category}}</li>    
+                        <li class="list-group-item">Title: {{movie.v_title}}</li>    
+                        <li class="list-group-item">Company: {{movie.f_company}}</li>
+                        <li class="list-group-item">Synopsis: {{movie.v_synopsis}}</li>
+                        <li class="list-group-item">Year Production: {{movie.v_year_production}}</li>
+                        <li class="list-group-item">Director: {{movie.v_director}}</li>
+                        <li class="list-group-item">Casts: {{movie.v_casts}}</li>
+                        <li class="list-group-item">Price: {{movie.v_price}}</li>
+                        <li class="list-group-item">Web url: {{movie.v_web_url}}</li>
+                        <li class="list-group-item">Srt url: {{movie.v_srt_url}}</li>
+                        <li class="list-group-item">Url cdn: {{movie.v_url_cdn}}</li>
+                        <li class="list-group-item">Views: {{movie.views}}</li>
+                        <li class="list-group-item">Favorite: {{movie.favorite}}</li>
+                        <li class="list-group-item">Eligible: {{movie.eligible}}</li>
+                        <li class="list-group-item">Expired Date: {{movie.expiredDate}}</li>
+                    </ul>
+                    <br>
+                    <a *ngIf="movie.homepage" href="{{movie.homepage}}" target="_blank" class="btn btn-default">Visit Movie Website</a>
+                </div>  
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Similar movies</h3>    
+                </div> 
+                <div class="row">
+                    <div *ngFor="let episode of movie.similiar_video; let i=index" class="col-md-2">
+                      <div>
+                        <a routerLink="/movie/{{episode.v_id}}"><img *ngIf = "episode.v_url_poster_landscape" class="thumbnail" src="{{movie.category == 'Premium' ? episode.v_url_poster : episode.v_url_poster_landscape}}" alt="{{episode.v_title}}"></a>
+                        <h4>{{episode.f_name}}</h4>
+                      </div>
+                    </div>
+                </div>
+            </div>
+        </div> 
+    </div>    
+</div>

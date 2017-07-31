@@ -1,0 +1,19 @@
+<div class="jumbotron">
+
+  <div class="panel panel-default" >
+    <div class="panel-heading">
+      <h3 class="panel-title"></h3>
+    </div>
+    <div class="panel-body">
+      <div *ngFor="let franchise of videoList; let i=index" class="col-md-2">
+        <a class="" routerLink="/movie/{{franchise.v_id}}">
+
+          <img  class="thumbnail" src="{{franchise.v_url_poster_landscape}}" alt="{{franchise.f_name}}" />
+          <h5><p>{{franchise.v_title}}</p></h5>
+        </a>
+    
+      </div>
+    </div>
+  </div>
+
+</div>

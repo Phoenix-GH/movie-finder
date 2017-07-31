@@ -1,0 +1,21 @@
+<div class="jumbotron" >
+
+<div class="panel panel-default" *ngFor="let category of videoList; let k=index">
+  <div class="panel-heading">
+    <h3 class="panel-title">{{category.f_id}}</h3>
+    </div>
+    <div class="panel-body">
+    <img  class="thumbnail" src="{{category.f_url_poster_landscape}}" alt="{{category.f_id}}">
+      <div class="row">
+        <div *ngFor="let movie of category.data_vid; let i=index" class="col-md-2">
+          <div >
+            <img class="thumbnail" src="{{id == 4 ? movie.v_url_poster : movie.v_url_poster_landscape}}" alt="{{movie.v_title}}">
+            <h4>{{movie.f_name}}</h4>
+            <p><a class="btn btn-default" routerLink="{{id == 4 ? '/movie/'+movie.v_id: '/franchise/'+movie.v_franchise_id}}">View Details</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

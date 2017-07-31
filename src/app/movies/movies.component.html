@@ -1,0 +1,57 @@
+<div class="jumbotron">
+      <div class="container">
+        <h1>Find a Movie</h1>
+        <p>search for your favorite movies...</p>
+          <form (submit)="searchMovies()">
+            <input type="text" class="form-control" [(ngModel)]="searchStr" name="searchStr">
+            <br>
+            <button class="btn btn-primary btn-lg">Find</button>
+          </form>
+      </div>
+    </div>
+
+  <div *ngIf="searchList" class="panel panel-default">
+     <div class="panel-heading">
+    <h3 class="panel-title">Search Results</h3>
+    </div>
+    <div class="panel-body">
+      <div class="row">
+        <div *ngFor="let movie of searchList; let i=index" class="col-md-2">
+          
+            <img class="thumbnail" src="{{movie.f_url_poster}}" alt="{{movie.f_name}}">
+            <h4>{{movie.f_name}}</h4>
+            <p>{{movie.f_company}}</p>
+           <p><a class="btn btn-default" routerLink="/movie/{{movie.v_id}}">View Details</a></p>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="panel panel-default" *ngFor="let banner of bannerList; let i=index">
+    <div class="panel-body">
+      <div class="row">
+        <div>
+            <a href="{{banner.b_url_link}}"><img class="thumbnail" src="{{banner.b_url_background}}" alt="{{banner.b_title}}"></a>
+          </div>
+      </div>
+    </div>
+</div>
+
+<div class="panel panel-default" *ngFor="let category of videoList; let i=index" >
+  <div class="panel-heading">
+    <h3 class="panel-title"></h3>
+    </div>
+    <div class="panel-body">
+      <div class="row">
+        <div *ngFor="let movie of category; let i=index" class="col-md-2">
+          <div >
+            <img class="thumbnail" src="{{movie.t_id == 4 ? movie.v_url_poster : movie.v_url_poster_landscape}}" alt="{{movie.v_title}}">
+            
+            <h4>{{movie.f_name}}</h4>
+            <p><a class="btn btn-default" routerLink="/movie/{{movie.v_id}}">View Details</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
